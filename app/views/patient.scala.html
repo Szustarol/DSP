@@ -1,0 +1,117 @@
+@()
+
+@main("Stroke chance prediction online") {
+    <div class="text-center">
+        <h1>We need some information to evaluate Your risk</h1>
+        <h4>All of the predictors are important in determining risk. Please take Your time to answer correctly.</h4>
+    </div>
+    <form method="post" action="/prediction/">
+        <div class="d-flex flex-row align-items-start flex-wrap">
+            <div class="form-group border p-1 m-1">
+                <label for="gender" class="form-label text-left">Gender</label>
+                <div class="form-check">
+                    <input type="radio" id="gender_male" class="form-check-input" name="gender" value="Male" required/>
+                    <label for="gender_male" class="form-check-label">Male</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="gender_female" class="form-check-input" name="gender" value="Female"/>
+                    <label for="gender_female" class="form-check-label">Female</label>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="age" class="form-label text-left">Age</label>
+                <div class="form-text">
+                    <input type="number" min="1" max="120" step="1" name="age" required/>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="hypertension" class="form-label text-left">Hypertension</label>
+                <div class="form-check">
+                    <input type="radio" id="hypertension_yes" class="form-check-input" name="hypertension" value="1" required/>
+                    <label for="hypertension_yes" class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="hypertension_no" class="form-check-input" name="hypertension" value="0"/>
+                    <label for="hypertension_no" class="form-check-label">No</label>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="heart_disease" class="form-label text-left">Present heart diseases</label>
+                <div class="form-check">
+                    <input type="radio" id="heart_disease_yes" class="form-check-input" name="heart_disease" value="1" required/>
+                    <label for="heart_disease_yes" class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="heart_disease_no" class="form-check-input" name="heart_disease" value="0"/>
+                    <label for="heart_disease_no" class="form-check-label">No</label>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="ever_married" class="form-label text-left">Have You ever been married</label>
+                <div class="form-check">
+                    <input type="radio" id="ever_married_yes" class="form-check-input" name="ever_married" value="Yes" required/>
+                    <label for="ever_married_yes" class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="ever_married_no" class="form-check-input" name="ever_married" value="No"/>
+                    <label for="ever_married_no" class="form-check-label">No</label>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="work_type" class="form-label text-left">Work type</label>
+                <select class="form-select" required name="work_type">
+                    <option disabled selected value>Select an option</option>
+                    <option value="children">Taking care of children</option>
+                    <option value="Govt_job">Government job</option>
+                    <option value="Never_worked">Never worked</option>
+                    <option value="Private">Private company</option>
+                    <option value="Self-employed">Self-employed</option>
+                </select>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="Residence_type" class="form-label text-left">Residence type</label>
+                <div class="form-check">
+                    <input type="radio" id="residence_type_rural" class="form-check-input" name="Residence_type" value="Rural" required/>
+                    <label for="residence_type_rural" class="form-check-label">Rural</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="residence_type_urban" class="form-check-input" name="Residence_type" value="Urban"/>
+                    <label for="residence_type_urban" class="form-check-label">Urban</label>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="avg_glucose_level" class="form-label text-left">Average glucose level [mg/dL]</label>
+                <div class="form-text">
+                    <input type="number" min="1" max="200" step="0.1" name="avg_glucose_level" required/>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="bmi" class="form-label text-left">BMI (Body Mass Index)</label>
+                <div class="form-text">
+                    <input type="number" min="0" max="40" step="0.1" name="bmi" required/>
+                </div>
+            </div>
+
+            <div class="form-group border p-1 m-1">
+                <label for="smoking_status" class="form-label text-left">Smoking status</label>
+                <select class="form-select" name="smoking_status" required>
+                    <option disabled selected value>Select an option</option>
+                    <option value="formerly smoked">Formerly smoked</option>
+                    <option value="never smoked">Never smoked</option>
+                    <option value="smokes">Smokes</option>
+                </select>
+            </div>
+        </div>
+        <div class="m-auto text-center">
+            <button type="submit" class="btn btn-primary">Calculate risk</button>
+        </div>
+    </form>
+}

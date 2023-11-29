@@ -1,0 +1,55 @@
+@(nPatients: Int, patientModel: PatientModel)
+
+@main("Prediction result") {
+    @if( nPatients == 0 ){
+        All patients have been examined.
+    } else{
+        Currently @nPatients patients await examination.
+        <div class="container">
+            <h6>Patient ID: @patientModel.id</h6>
+            <div class="patient_info">
+                Gender: @patientModel.gender
+            </div>
+            <div class="patient_info">
+                Age: @patientModel.age
+            </div>
+            <div class="patient_info">
+                Hypertension: @if( patientModel.hypertension == 1 ) {Yes} else {No}
+            </div>
+            <div class="patient_info">
+                Previous heart diseases: @if( patientModel.heart_disease == 1 ) {Yes} else {No}
+            </div>
+            <div class="ever_married">
+                Patient ever married: @patientModel.ever_married
+            </div>
+            <div class="patient_info">
+                Patient work type:
+                @if(patientModel.work_type == "Govt_job"){
+                    Government job
+                } else if(patientModel.work_type == "children"){
+                    Children care
+                } else if(patientModel.work_type == "Never_worked"){
+                    Never worked
+                } else if(patientModel.work_type == "Private"){
+                    Private company
+                } else{
+                    Self-employed
+                }
+            </div>
+            <div class="patient_info">
+                Residence type: @patientModel.Residence_type
+            </div>
+            <div class="patient_info">
+                Average glucose level [mg/dL]: @patientModel.avg_glucose_level
+            </div>
+            <div class="patient_info">
+                BMI: @patientModel.bmi
+            </div>
+            <div class="patient_info">
+                Smoking status: @patientModel.smoking_status
+            </div>
+        </div>
+        <a class="btn btn-danger" href="/doctor/result/@patientModel.id/1">High risk of stroke</a>
+        <a class="btn btn-success" href="/doctor/result/@patientModel.id/0">No, or low risk of stroke</a>
+    }
+}

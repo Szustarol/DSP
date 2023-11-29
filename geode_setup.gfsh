@@ -1,0 +1,5 @@
+start locator --name=locator
+configure pdx --read-serialized=true
+start server --name=server
+
+create region --name=patients --type=PARTITION_REDUNDANT --redundant-copies=2

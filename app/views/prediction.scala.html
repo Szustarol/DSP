@@ -1,0 +1,9 @@
+@(prediction: Boolean)
+
+@main("Prediction result") {
+    @if(prediction){
+        You have a high chance of having a stroke. Please consult with a doctor.
+    } else {
+        Your chances of having a stroke are low.
+    }
+}
